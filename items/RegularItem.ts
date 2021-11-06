@@ -5,9 +5,9 @@ export class RegularItem {
   item: Item;
 
   constructor(private readonly _sellIn: number, private readonly _quality: number, public readonly name: string) {
-    const regularRules = new RegularRules();
+    const rules = new RegularRules();
 
-    this.item = new Item(_sellIn, _quality, regularRules);
+    this.item = new Item(_sellIn, _quality, rules);
   }
 
   get sellIn() {

@@ -6,9 +6,9 @@ export class AgedBrie {
   public readonly name = 'Aged Brie';
 
   constructor(private readonly _sellIn: number, private readonly _quality: number) {
-    const regularRules = new AgedBrieRules();
+    const rules = new AgedBrieRules();
 
-    this.item = new Item(_sellIn, _quality, regularRules);
+    this.item = new Item(_sellIn, _quality, rules);
   }
 
   get sellIn() {
