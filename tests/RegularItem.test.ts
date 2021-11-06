@@ -1,10 +1,11 @@
 import { assertEquals, assertThrows } from 'https://deno.land/std@0.113.0/testing/asserts.ts';
-import { RegularItem } from '../items/RegularItem.ts';
+import { ItemType } from '../items/constants.ts';
+import { ItemFactory } from '../items/ItemFactory.ts';
 
 const createRegularItem = ({ sellIn = 1, quality = 1 }) => {
   const name = 'Regular Item';
 
-  return new RegularItem(sellIn, quality, name);
+  return ItemFactory.create(ItemType.regularItem, { sellIn, quality, name });
 };
 
 Deno.test('a regular item quality decrease by one on every update', () => {

@@ -1,10 +1,10 @@
 import { assertEquals, assertThrows } from 'https://deno.land/std@0.113.0/testing/asserts.ts';
-import { AgedBrie } from '../items/AgedBrie.ts';
+import { ItemType } from '../items/constants.ts';
+import { ItemFactory } from '../items/ItemFactory.ts';
 
 const createAgedBrie = ({ sellIn = 1, quality = 1 }) => {
-  return new AgedBrie(sellIn, quality);
+  return ItemFactory.create(ItemType.agedBrie, { sellIn, quality });
 };
-
 Deno.test('an Aged Brie quality increase by one on every update', () => {
   const quality = 1;
   const item = createAgedBrie({ quality });

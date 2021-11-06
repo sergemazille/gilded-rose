@@ -4,7 +4,7 @@ export class Item {
   sellIn: number;
   quality: number;
 
-  constructor(sellIn: number, quality: number, private readonly rules: Rules) {
+  constructor(sellIn: number, quality: number, public readonly name: string, private readonly rules: Rules) {
     this.rules.validateProperties({ quality });
 
     this.sellIn = sellIn;
