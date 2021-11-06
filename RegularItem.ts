@@ -1,12 +1,11 @@
 import { Item } from './Item.ts';
-import { AgedBrieRules } from './AgedBrieRules.ts';
+import { RegularRules } from './RegularRules.ts';
 
-export class AgedBrie {
+export class RegularItem {
   item: Item;
-  public readonly name = 'Aged Brie';
 
-  constructor(private readonly _sellIn: number, private readonly _quality: number) {
-    const regularRules = new AgedBrieRules();
+  constructor(private readonly _sellIn: number, private readonly _quality: number, public readonly name: string) {
+    const regularRules = new RegularRules();
 
     this.item = new Item(_sellIn, _quality, regularRules);
   }

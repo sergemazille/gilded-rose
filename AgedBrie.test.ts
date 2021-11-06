@@ -1,23 +1,60 @@
-import { assertEquals } from 'https://deno.land/std@0.113.0/testing/asserts.ts';
-
+import { assertEquals, assertThrows } from 'https://deno.land/std@0.113.0/testing/asserts.ts';
 import { AgedBrie } from './AgedBrie.ts';
 
-Deno.test('the quality of an Aged Brie increase every day', () => {
-  const sellIn = 2;
+const createAgedBrie = ({ sellIn = 1, quality = 1 }) => {
+  return new AgedBrie(sellIn, quality);
+};
+
+Deno.test('an Aged Brie quality increase by one on every update', () => {
   const quality = 1;
-  const agedBrie = new AgedBrie(sellIn, quality);
+  const item = createAgedBrie({ quality });
 
-  agedBrie.update();
+  item.update();
 
-  assertEquals(agedBrie.quality, 2);
+  assertEquals(item.quality, 2);
 });
 
-Deno.test('the quality of an Aged Brie decreased by 2 every day after sell in', () => {
+Deno.test('an Aged Brie sellIn decrease by one on update', () => {
+  const sellIn = 1;
+  const item = createAgedBrie({ sellIn });
+
+  item.update();
+
+  assertEquals(item.sellIn, 0);
+});
+
+Deno.test('an Aged Brie quality decrease by two when sellIn becomes negative on every update', () => {
   const sellIn = 0;
   const quality = 2;
-  const agedBrie = new AgedBrie(sellIn, quality);
+  const item = createAgedBrie({ sellIn, quality });
 
-  agedBrie.update();
+  item.update();
 
-  assertEquals(agedBrie.quality, 0);
+  assertEquals(item.quality, 0);
+});
+
+Deno.test('an Aged Brie quality updated to a negative value will default to 0', () => {
+  const sellIn = 0;
+  const quality = 0;
+  const item = createAgedBrie({ sellIn, quality });
+
+  item.update();
+
+  assertEquals(item.quality, 0);
+});
+
+Deno.test('an Aged Brie quality can not be set to a negative value', () => {
+  const quality = -1;
+
+  assertThrows(() => {
+    createAgedBrie({ quality });
+  });
+});
+
+Deno.test('an Aged Brie quality can not be set to a value greater than 50', () => {
+  const quality = 51;
+
+  assertThrows(() => {
+    createAgedBrie({ quality });
+  });
 });
