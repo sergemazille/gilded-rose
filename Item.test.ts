@@ -13,7 +13,7 @@ Deno.test('an Item Quality can be updated', () => {
   assertEquals(item.quality, 2);
 });
 
-Deno.test('an Item Quality can not be updated to a negative value', () => {
+Deno.test('an Item Quality updated to a negative value will default to 0', () => {
   const sellIn = 1;
   const quality = 1;
   const name = 'Standart Item';
@@ -21,7 +21,7 @@ Deno.test('an Item Quality can not be updated to a negative value', () => {
 
   item.updateQuality(-1);
 
-  assertNotEquals(item.quality, -1);
+  assertEquals(item.quality, 0);
 });
 
 Deno.test('an Item Quality can not be set to a negative value', () => {
@@ -34,7 +34,7 @@ Deno.test('an Item Quality can not be set to a negative value', () => {
   });
 });
 
-Deno.test('an Item Quality can not be updated to a value greater than 50', () => {
+Deno.test('an Item Quality updated to a value greater than 50 will default to 50', () => {
   const sellIn = 1;
   const quality = 1;
   const name = 'Standart Item';
@@ -42,7 +42,7 @@ Deno.test('an Item Quality can not be updated to a value greater than 50', () =>
 
   item.updateQuality(51);
 
-  assertNotEquals(item.quality, 51);
+  assertEquals(item.quality, 50);
 });
 
 Deno.test('an Item Quality can not be set to a value greater than 50', () => {

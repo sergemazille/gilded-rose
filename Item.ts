@@ -16,7 +16,15 @@ export class Item {
   }
 
   updateQuality(newQuality: number) {
-    if (newQuality < 0 || newQuality > 50) {
+    if (newQuality < 0) {
+      this.quality = 0;
+
+      return;
+    }
+
+    if (newQuality > 50) {
+      this.quality = 50;
+
       return;
     }
 
