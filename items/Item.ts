@@ -1,4 +1,5 @@
-import { Rules } from './Rules.ts';
+import { Rules } from '../rules/Rules.ts';
+
 export class Item {
   sellIn: number;
   quality: number;

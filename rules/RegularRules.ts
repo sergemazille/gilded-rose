@@ -1,5 +1,5 @@
 import { Rules } from './Rules.ts';
-import { Item } from './Item.ts';
+import { Item } from '../items/Item.ts';
 
 export class RegularRules implements Rules {
   validateProperties({ quality }: Partial<Item>): void {

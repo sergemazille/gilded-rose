@@ -1,5 +1,5 @@
 import { assertEquals, assertThrows } from 'https://deno.land/std@0.113.0/testing/asserts.ts';
-import { AgedBrie } from './AgedBrie.ts';
+import { AgedBrie } from '../items/AgedBrie.ts';
 
 const createAgedBrie = ({ sellIn = 1, quality = 1 }) => {
   return new AgedBrie(sellIn, quality);

@@ -1,5 +1,5 @@
 import { Item } from './Item.ts';
-import { RegularRules } from './RegularRules.ts';
+import { RegularRules } from '../rules/RegularRules.ts';
 
 export class RegularItem {
   item: Item;

@@ -1,5 +1,5 @@
 import { assertEquals, assertThrows } from 'https://deno.land/std@0.113.0/testing/asserts.ts';
-import { RegularItem } from './RegularItem.ts';
+import { RegularItem } from '../items/RegularItem.ts';
 
 const createRegularItem = ({ sellIn = 1, quality = 1 }) => {
   const name = 'Regular Item';

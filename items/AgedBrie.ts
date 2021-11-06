@@ -1,5 +1,5 @@
+import { AgedBrieRules } from '../rules/AgedBrieRules.ts';
 import { Item } from './Item.ts';
-import { AgedBrieRules } from './AgedBrieRules.ts';
 
 export class AgedBrie {
   item: Item;
