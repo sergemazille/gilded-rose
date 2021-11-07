@@ -1,7 +1,7 @@
 import { MutableItem } from '../items/MutableItem.ts';
 import { MutableItemRules } from './MutableItemRules.ts';
 
-export class AgedBrieRules extends MutableItemRules {
+export class RegularItemRules extends MutableItemRules {
   getUpdatedQuality(item: MutableItem) {
     const { sellIn, quality } = item;
 
@@ -12,7 +12,7 @@ export class AgedBrieRules extends MutableItemRules {
       return updatedQuality;
     }
 
-    const newQuality = quality + 1;
+    const newQuality = quality - 1;
     const updatedQuality = this.clampWithinLimits(newQuality);
 
     return updatedQuality;

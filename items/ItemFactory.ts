@@ -5,7 +5,7 @@ import { AgedBrieRules } from '../rules/AgedBrieRules.ts';
 import { ImmutableItem } from './ImmutableItem.ts';
 import { Item } from './constants.ts';
 import { MutableItem } from './MutableItem.ts';
-import { RegularRules } from '../rules/RegularRules.ts';
+import { RegularItemRules } from '../rules/RegularItemRules.ts';
 import { SulfurasRules } from '../rules/SulfurasRules.ts';
 
 export class ItemFactory {
@@ -16,7 +16,7 @@ export class ItemFactory {
       case ItemType.regularItem:
         properties = {
           ...args,
-          rules: new RegularRules(),
+          rules: new RegularItemRules(),
         } as MutableItemProperties;
 
         return MutableItem.fromProperties(properties);
