@@ -13,7 +13,7 @@ Deno.test('creation of a mutable item', () => {
 });
 
 Deno.test('creation of an immutable item', () => {
-  const regularItem = ItemFactory.create(ItemType.sulfuras);
+  const sulfuras = ItemFactory.create(ItemType.sulfuras);
 
-  assert(regularItem instanceof ImmutableItem);
+  assert(sulfuras instanceof ImmutableItem);
 });
