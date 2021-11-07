@@ -1,6 +1,4 @@
-import { Item } from '../items/Item.ts';
+import { AgedBrieRules } from './AgedBrieRules.ts';
+import { RegularRules } from './RegularRules.ts';
 
-export interface Rules {
-  validateProperties(item: Partial<Item>): void;
-  getUpdatedQuality(item: Item): number;
-}
+export type Rules = AgedBrieRules | RegularRules;

@@ -1,12 +1,12 @@
 import { MutableItem } from '../items/MutableItem.ts';
 
 export class RegularRules {
-  validateProperties({ quality }: Partial<MutableItem>): void {
-    if (quality! < 0) {
+  validateProperties({ quality }: { quality: number }): void {
+    if (quality < 0) {
       throw new Error("Quality can't be set to a negative value");
     }
 
-    if (quality! > 50) {
+    if (quality > 50) {
       throw new Error("Quality can't be set to a value greater than 50");
     }
   }
@@ -21,13 +21,13 @@ export class RegularRules {
       return updatedQuality;
     }
 
-    const newQuality = quality -1;
+    const newQuality = quality - 1;
     const updatedQuality = this.clampWithinLimits(newQuality);
 
     return updatedQuality;
   }
 
-  clampWithinLimits(newQuality: number): number {
+  private clampWithinLimits(newQuality: number): number {
     if (newQuality < 0) {
       return 0;
     }

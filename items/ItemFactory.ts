@@ -1,37 +1,31 @@
-import { ItemParams, ItemType } from './constants.ts';
-
 import { AgedBrieRules } from '../rules/AgedBrieRules.ts';
-import { Item } from './Item.ts';
+import { Item } from './constants.ts';
+import { ItemType } from './constants.ts';
+import { MutableItem } from './MutableItem.ts';
+import { MutableItemProperties } from './constants.ts';
 import { RegularRules } from '../rules/RegularRules.ts';
-import { Rules } from '../rules/Rules.ts';
 
 export class ItemFactory {
-  static create(type: ItemType, args: Partial<ItemParams>): Item {
-    const params = {
-      ...args,
-      ...this.getParamsFor(type),
-    };
+  static create(type: ItemType, args: Partial<Item>): Item {
+    let properties;
 
-    const { sellIn, quality, name, rules } = params as ItemParams;
-
-    return new Item(sellIn, quality, name, rules);
-  }
-
-  private static getParamsFor(type: ItemType): Record<string, number | string | Rules> {
     switch (type) {
       case ItemType.regularItem:
-        return {
+        properties = {
+          ...args,
           rules: new RegularRules(),
-        };
+        } as MutableItemProperties;
+
+        return MutableItem.fromProperties(properties);
 
       case ItemType.agedBrie:
-        return {
+        properties = {
+          ...args,
           name: 'Aged Brie',
           rules: new AgedBrieRules(),
-        };
+        } as MutableItemProperties;
 
-      default:
-        return {};
+        return MutableItem.fromProperties(properties);
     }
   }
 }

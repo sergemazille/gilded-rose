@@ -1,34 +1,33 @@
-import { Rules } from './Rules.ts';
-import { Item } from '../items/Item.ts';
+import { MutableItem } from '../items/MutableItem.ts';
 
-export class AgedBrieRules implements Rules {
-  validateProperties({ quality }: Partial<Item>): void {
-    if (quality! < 0) {
+export class AgedBrieRules {
+  validateProperties({ quality }: { quality: number }): void {
+    if (quality < 0) {
       throw new Error("Quality can't be set to a negative value");
     }
 
-    if (quality! > 50) {
+    if (quality > 50) {
       throw new Error("Quality can't be set to a value greater than 50");
     }
   }
 
-  getUpdatedQuality(item: Item) {
+  getUpdatedQuality(item: MutableItem) {
     const { sellIn, quality } = item;
 
     if (sellIn < 0) {
       const newQuality = quality - 2;
-      const updatedQuality = this.updateQuality(newQuality);
+      const updatedQuality = this.clampWithinLimits(newQuality);
 
       return updatedQuality;
     }
 
-    const newQuality = quality +1;
-    const updatedQuality = this.updateQuality(newQuality);
+    const newQuality = quality + 1;
+    const updatedQuality = this.clampWithinLimits(newQuality);
 
     return updatedQuality;
   }
 
-  updateQuality(newQuality: number): number {
+  private clampWithinLimits(newQuality: number): number {
     if (newQuality < 0) {
       return 0;
     }
