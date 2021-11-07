@@ -1,10 +1,10 @@
 import { ImmutableItemProperties } from '../items/constants.ts';
-import { Rules } from '../rules/Rules.ts';
+import { ImmutableItemRules } from '../rules/constants.ts';
 
 export class ImmutableItem {
   quality: number;
 
-  private constructor(quality: number, public readonly name: string, private readonly rules: Rules) {
+  private constructor(quality: number, public readonly name: string, private readonly rules: ImmutableItemRules) {
     this.rules.validateProperties({ quality });
 
     this.quality = quality;

@@ -1,11 +1,11 @@
-import { Rules } from '../rules/Rules.ts';
+import { MutableItemRules } from '../rules/constants.ts';
 import { MutableItemProperties } from './constants.ts';
 
 export class MutableItem {
   sellIn: number;
   quality: number;
 
-  private constructor(sellIn: number, quality: number, public readonly name: string, public readonly rules: Rules) {
+  private constructor(sellIn: number, quality: number, public readonly name: string, public readonly rules: MutableItemRules) {
     this.rules.validateProperties({ quality });
 
     this.sellIn = sellIn;
