@@ -7,6 +7,7 @@ export type Item = MutableItem | ImmutableItem;
 
 export enum ItemType {
   regularItem = 'RegularItem',
+  conjuredItem = 'ConjuredItem',
   agedBrie = 'AgedBrie',
   sulfuras = 'Sulfuras',
   backstagePasses = 'BackstagePasses',

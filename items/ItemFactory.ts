@@ -3,6 +3,7 @@ import { ItemType, sulfurasQuality } from './constants.ts';
 
 import { AgedBrieRules } from '../rules/AgedBrieRules.ts';
 import { BackstagePassesRules } from '../rules/BackstagePassesRules.ts';
+import { ConjuredItemRules } from '../rules/ConjuredItemRules.ts';
 import { ImmutableItem } from './ImmutableItem.ts';
 import { Item } from './constants.ts';
 import { MutableItem } from './MutableItem.ts';
@@ -35,6 +36,14 @@ export class ItemFactory {
         properties = {
           ...args,
           rules: new BackstagePassesRules(),
+        } as MutableItemProperties;
+
+        return MutableItem.fromProperties(properties);
+
+      case ItemType.conjuredItem:
+        properties = {
+          ...args,
+          rules: new ConjuredItemRules(),
         } as MutableItemProperties;
 
         return MutableItem.fromProperties(properties);
