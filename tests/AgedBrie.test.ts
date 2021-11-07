@@ -1,4 +1,4 @@
-import { assert, assertEquals, assertThrows } from 'https://deno.land/std@0.113.0/testing/asserts.ts';
+import { assert, assertEquals } from 'https://deno.land/std@0.113.0/testing/asserts.ts';
 
 import { ItemFactory } from '../items/ItemFactory.ts';
 import { ItemType } from '../items/constants.ts';
