@@ -1,5 +1,5 @@
 ## Launch the tests with Deno:
-`Deno test`
+`deno test`
 
 
 Original kata specification:
