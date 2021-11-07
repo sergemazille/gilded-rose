@@ -9,6 +9,7 @@ export enum ItemType {
   regularItem = 'RegularItem',
   agedBrie = 'AgedBrie',
   sulfuras = 'Sulfuras',
+  backstagePasses = 'BackstagePasses',
 }
 
 export type MutableItemProperties = { sellIn: number; quality: number; name: string; rules: MutableItemRules };

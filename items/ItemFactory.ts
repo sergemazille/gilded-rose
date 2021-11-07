@@ -2,6 +2,7 @@ import { ImmutableItemProperties, MutableItemProperties } from './constants.ts';
 import { ItemType, sulfurasQuality } from './constants.ts';
 
 import { AgedBrieRules } from '../rules/AgedBrieRules.ts';
+import { BackstagePassesRules } from '../rules/BackstagePassesRules.ts';
 import { ImmutableItem } from './ImmutableItem.ts';
 import { Item } from './constants.ts';
 import { MutableItem } from './MutableItem.ts';
@@ -26,6 +27,14 @@ export class ItemFactory {
           ...args,
           name: 'Aged Brie',
           rules: new AgedBrieRules(),
+        } as MutableItemProperties;
+
+        return MutableItem.fromProperties(properties);
+
+      case ItemType.backstagePasses:
+        properties = {
+          ...args,
+          rules: new BackstagePassesRules(),
         } as MutableItemProperties;
 
         return MutableItem.fromProperties(properties);
