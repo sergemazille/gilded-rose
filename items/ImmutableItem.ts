@@ -4,8 +4,8 @@ import { ImmutableItemRules } from '../rules/constants.ts';
 export class ImmutableItem {
   quality: number;
 
-  private constructor(quality: number, public readonly name: string, private readonly rules: ImmutableItemRules) {
-    this.rules.validateProperties({ quality });
+  private constructor(quality: number, public readonly name: string, readonly rules: ImmutableItemRules) {
+    rules.validateProperties({ quality });
 
     this.quality = quality;
   }

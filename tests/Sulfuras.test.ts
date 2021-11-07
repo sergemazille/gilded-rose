@@ -8,5 +8,5 @@ Deno.test("Sulfuras' properties are conform to specifications", () => {
 
   assert(sulfuras instanceof ImmutableItem);
   assertEquals(sulfuras.quality, 80);
-  assertEquals(sulfuras.name, 'Sulfuras');
+  assertEquals(sulfuras.name, 'Sulfuras, Hand of Ragnaros');
 });

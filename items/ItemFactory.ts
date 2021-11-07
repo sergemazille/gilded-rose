@@ -51,7 +51,7 @@ export class ItemFactory {
       case ItemType.sulfuras:
         properties = {
           quality: sulfurasQuality,
-          name: 'Sulfuras',
+          name: 'Sulfuras, Hand of Ragnaros',
           rules: new SulfurasRules(),
         } as ImmutableItemProperties;
 
