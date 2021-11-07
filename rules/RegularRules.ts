@@ -1,8 +1,7 @@
-import { Rules } from './Rules.ts';
-import { Item } from '../items/Item.ts';
+import { MutableItem } from '../items/MutableItem.ts';
 
-export class RegularRules implements Rules {
-  validateProperties({ quality }: Partial<Item>): void {
+export class RegularRules {
+  validateProperties({ quality }: Partial<MutableItem>): void {
     if (quality! < 0) {
       throw new Error("Quality can't be set to a negative value");
     }
@@ -12,23 +11,23 @@ export class RegularRules implements Rules {
     }
   }
 
-  getUpdatedQuality(item: Item) {
+  getUpdatedQuality(item: MutableItem) {
     const { sellIn, quality } = item;
 
     if (sellIn < 0) {
       const newQuality = quality - 2;
-      const updatedQuality = this.updateQuality(newQuality);
+      const updatedQuality = this.clampWithinLimits(newQuality);
 
       return updatedQuality;
     }
 
     const newQuality = quality -1;
-    const updatedQuality = this.updateQuality(newQuality);
+    const updatedQuality = this.clampWithinLimits(newQuality);
 
     return updatedQuality;
   }
 
-  updateQuality(newQuality: number): number {
+  clampWithinLimits(newQuality: number): number {
     if (newQuality < 0) {
       return 0;
     }
